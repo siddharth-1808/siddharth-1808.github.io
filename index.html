@@ -647,22 +647,101 @@
             font-size: 0.78rem;
         }
 
+        /* ── HAMBURGER (hidden on desktop) ── */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--navy);
+            border-radius: 2px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 860px) {
-            .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-            .hero-card  { display: none; }
-            .exp-card   { grid-template-columns: 1fr; gap: 16px; }
-            .edu-grid   { grid-template-columns: 1fr; }
+            .hero-inner  { grid-template-columns: 1fr; gap: 40px; }
+            .hero-card   { display: none; }
+            .exp-card    { grid-template-columns: 1fr; gap: 20px; }
+            .edu-grid    { grid-template-columns: 1fr; }
             .awards-grid { grid-template-columns: 1fr; }
             .contact-cols { grid-template-columns: 1fr; gap: 40px; }
             .skills-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 520px) {
-            section { padding: 56px 20px; }
-            nav     { padding: 0 20px; }
-            .nav-links { gap: 16px; }
-            .skills-grid { grid-template-columns: 1fr; }
+        @media (max-width: 640px) {
+            nav { padding: 0 16px; }
+
+            .nav-hamburger { display: flex; }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 56px; left: 0; right: 0;
+                flex-direction: column;
+                gap: 0;
+                background: rgba(255,255,255,0.97);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid var(--border);
+                z-index: 199;
+                padding: 8px 0 16px;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li { list-style: none; }
+            .nav-links li a {
+                display: block;
+                padding: 13px 24px;
+                font-size: 0.9rem;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                font-weight: 500;
+                color: var(--text-muted);
+            }
+            .nav-links li a:hover { color: var(--blue); background: var(--bg); }
+
+            #hero {
+                padding: 88px 20px 52px;
+                min-height: auto;
+                align-items: flex-start;
+            }
+            .hero-tagline br { display: none; }
+            .hero-stats {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px 24px;
+            }
+            .hero-ctas { flex-direction: column; align-items: stretch; gap: 10px; }
+            .cta-primary, .cta-secondary { justify-content: center; }
+
+            section { padding: 52px 20px; }
+            .section-subtitle { margin-bottom: 36px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-name    { font-size: 2.4rem; }
+            .hero-tagline { font-size: 0.95rem; }
+            .stat-num     { font-size: 1.75rem; }
+            .skills-grid  { grid-template-columns: 1fr; }
+            .exp-card     { padding: 28px 0; }
+            .award-card   { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .cert-row     { flex-direction: column; align-items: flex-start; gap: 2px; }
+            footer        { padding: 20px 20px; }
         }
     </style>
 </head>
@@ -672,6 +751,9 @@
 <nav>
     <div class="nav-inner">
         <a class="nav-logo" href="#hero">SC</a>
+        <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
         <ul class="nav-links">
             <li><a href="#experience">Experience</a></li>
             <li><a href="#education">Education</a></li>
@@ -1082,5 +1164,23 @@
     Siddharth Chauhan &nbsp;·&nbsp; Bengaluru, India
 </footer>
 
+<script>
+    (function() {
+        var btn = document.querySelector('.nav-hamburger');
+        var menu = document.querySelector('.nav-links');
+        btn.addEventListener('click', function() {
+            var open = menu.classList.toggle('open');
+            btn.classList.toggle('open', open);
+            btn.setAttribute('aria-expanded', open);
+        });
+        menu.querySelectorAll('a').forEach(function(a) {
+            a.addEventListener('click', function() {
+                menu.classList.remove('open');
+                btn.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    })();
+</script>
 </body>
 </html>
