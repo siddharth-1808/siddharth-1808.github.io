@@ -850,7 +850,7 @@
 <section id="experience">
     <div class="section-inner">
         <p class="section-label">Work Experience</p>
-        <h2 class="section-title">4.5 years across three industries</h2>
+        <h2 class="section-title" id="exp-years">4.5 years across three industries</h2>
         <p class="section-subtitle">Pet Care Quick Commerce, healthcare tech, and Global Fashion Retail.</p>
 
         <div class="exp-grid">
@@ -1165,6 +1165,17 @@
 </footer>
 
 <script>
+    (function() {
+        var start = new Date(2021, 4, 1); // May 2021
+        var now = new Date();
+        var months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+        var years = months / 12;
+        var rounded = Math.round(years * 2) / 2;
+        var display = rounded % 1 === 0 ? rounded.toFixed(0) : rounded.toFixed(1);
+        var el = document.getElementById('exp-years');
+        if (el) el.textContent = display + ' years across three industries';
+    })();
+
     (function() {
         var btn = document.querySelector('.nav-hamburger');
         var menu = document.querySelector('.nav-links');
