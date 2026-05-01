@@ -647,6 +647,41 @@
             font-size: 0.78rem;
         }
 
+        /* ── HERO DOMAIN PILLS ── */
+        .hero-domains {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 36px;
+        }
+        .hero-domain-pill {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--slate);
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 4px 11px;
+            border-radius: 20px;
+            letter-spacing: 0.02em;
+        }
+
+        /* ── EXP DOMAIN TAGS ── */
+        .exp-domain-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 10px;
+        }
+        .exp-domain-tag {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--blue);
+            background: var(--blue-light);
+            padding: 2px 7px;
+            border-radius: 3px;
+            letter-spacing: 0.02em;
+        }
+
         /* ── HAMBURGER (hidden on desktop) ── */
         .nav-hamburger {
             display: none;
@@ -721,6 +756,7 @@
                 align-items: flex-start;
             }
             .hero-tagline br { display: none; }
+            .hero-domains { display: none; }
             .hero-stats {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -787,6 +823,14 @@
                     <div class="stat-num">12+</div>
                     <div class="stat-label">Tools Built</div>
                 </div>
+            </div>
+
+            <div class="hero-domains">
+                <span class="hero-domain-pill">Order Operations</span>
+                <span class="hero-domain-pill">Inventory Management</span>
+                <span class="hero-domain-pill">3PL / Logistics</span>
+                <span class="hero-domain-pill">Healthcare</span>
+                <span class="hero-domain-pill">Retail &amp; Commercial Tools</span>
             </div>
 
             <div class="hero-ctas">
@@ -861,6 +905,11 @@
                     <div class="exp-role">Operations Technology &amp; Intelligence</div>
                     <div class="exp-dates">Jan 2026 – Present</div>
                     <span class="badge-featured" style="margin-top:10px;display:inline-block">Featured</span>
+                    <div class="exp-domain-tags" style="margin-top:12px;">
+                        <span class="exp-domain-tag">Order Operations</span>
+                        <span class="exp-domain-tag">Inventory</span>
+                        <span class="exp-domain-tag">3PL / Logistics</span>
+                    </div>
                 </div>
                 <div class="exp-right">
                     <p class="exp-summary">Owns the operational intelligence layer for a 3PL quick-commerce operation. Made the call to <strong>scrap a Looker Studio dashboard used in daily leadership meetings</strong> and rebuild the entire solution from scratch as an opinionated Next.js application — one that opens on yesterday's data with zero configuration and surfaces fires automatically.</p>
@@ -891,6 +940,9 @@
                     <div class="exp-role">Product Manager</div>
                     <div class="exp-dates">Aug 2024 – Dec 2025</div>
                     <span class="exp-tenure">1.5 yrs</span>
+                    <div class="exp-domain-tags">
+                        <span class="exp-domain-tag">Healthcare</span>
+                    </div>
                 </div>
                 <div class="exp-right">
                     <ul class="exp-bullets">
@@ -917,6 +969,10 @@
                     <div class="exp-company"><a href="https://www.fossil.com/en-in/watches/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px;"><img src="fossil-favicon.png" alt="" style="width:16px;height:16px;border-radius:3px;object-fit:contain;">Fossil Group Inc.<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.45;flex-shrink:0"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
                     <div class="exp-role">Manager – Commercial Tools</div>
                     <div class="exp-dates">May 2021 – Jul 2024</div>
+                    <div class="exp-domain-tags">
+                        <span class="exp-domain-tag">Retail &amp; Commercial</span>
+                        <span class="exp-domain-tag">Inventory</span>
+                    </div>
                     <div style="margin-top:16px;">
                         <div style="font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate-light);margin-bottom:10px;">Career Trajectory</div>
                         <div style="display:flex;flex-direction:column;border-left:2px solid var(--border);padding-left:12px;">
