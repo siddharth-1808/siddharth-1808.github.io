@@ -1169,11 +1169,12 @@
         var start = new Date(2021, 4, 1); // May 2021
         var now = new Date();
         var months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
-        var years = months / 12;
-        var rounded = Math.round(years * 2) / 2;
-        var display = rounded % 1 === 0 ? rounded.toFixed(0) : rounded.toFixed(1);
+        var ceiled = Math.ceil(months / 6) / 2; // next 0.5-year boundary
+        var isExact = months % 6 === 0;
+        var prefix = isExact ? '' : '~';
+        var display = ceiled % 1 === 0 ? ceiled.toFixed(0) : ceiled.toFixed(1);
         var el = document.getElementById('exp-years');
-        if (el) el.textContent = display + ' years across three industries';
+        if (el) el.textContent = prefix + display + ' years across three industries';
     })();
 
     (function() {
